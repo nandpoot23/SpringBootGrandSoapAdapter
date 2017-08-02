@@ -1,0 +1,61 @@
+***********************************************************************************************************************
+                                                  SpringBootGrandSoapAdapter
+***********************************************************************************************************************
+Description
+
+This is an adapter which provides a SOAP interface to maintain legacy consumers. 
+The adapter is a shallow proxy which publishes a WSDL, takes in requests, 
+and calls the REST-based SpringBootWithRestWebService.
+
+The WSDL may be found here, simply save the desired WSDL into /src/main/resources/ as the file MathsDbService.wsdl. 
+At the command line, run the following command:-
+
+commandline>gradlew genJaxb
+
+Lastly, refresh the workspace to ensure the types have been generated.
+
+The service is a SOAP-based interface:
+
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dm="http://dm.xml.soap.sample.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <dm:queryEmpConfigs>
+         <!--Optional:-->
+         <arg0>
+            <id>1</id>
+         </arg0>
+      </dm:queryEmpConfigs>
+   </soapenv:Body>
+</soapenv:Envelope>
+
+***********************************************************************************************************************
+
+java.lang.IllegalStateException: No adapter for endpoint 
+[public com.sample.soap.xml.dm.QueryEmpConfigsResponse
+ com.example.grand.soap.adapter.DmGrandAccountEndpoint.
+ queryEmpConfigs(com.sample.soap.xml.dm.QueryEmpConfigs,
+ org.springframework.ws.context.MessageContext) throws 
+ java.lang.Exception]: Is your endpoint annotated with @Endpoint, or does it implement a supported 
+interface like MessageHandler or PayloadEndpoint?   
+
+ 
+Solution is to add the @XmlRootElement annotation to your stub generated classes.
+By default when we generate stub from wsdl then it comes automatically. 
+If not present then add this annotation else above error will come. 
+ 
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+   <SOAP-ENV:Header/>
+   <SOAP-ENV:Body>
+      <SOAP-ENV:Fault>
+         <faultcode>SOAP-ENV:Server</faultcode>
+         <faultstring xml:lang="en">No adapter for endpoint 
+         [public com.sample.soap.xml.dm.QueryEmpConfigsResponse 
+         com.example.grand.soap.adapter.DmGrandAccountEndpoint.queryEmpConfigs
+         (com.sample.soap.xml.dm.QueryEmpConfigs,org.springframework.ws.context.MessageContext) 
+         throws java.lang.Exception]: Is your endpoint annotated with @Endpoint, 
+         or does it implement a supported interface like MessageHandler or PayloadEndpoint?</faultstring>
+      </SOAP-ENV:Fault>
+   </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>
+ 
+***********************************************************************************************************************

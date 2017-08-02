@@ -1,0 +1,44 @@
+http://localhost:8080/DmService/1.0.wsdl
+
+2017-08-02 13:55:47.724 TRACE 7372 --- [nio-8080-exec-4] o.s.w.t.http.MessageDispatcherServlet    : Bound request context to thread: org.apache.catalina.connector.RequestFacade@348a4cf0
+2017-08-02 13:55:47.728 DEBUG 7372 --- [nio-8080-exec-4] .WebServiceMessageReceiverHandlerAdapter : Accepting incoming [org.springframework.ws.transport.http.HttpServletConnection@53255f8e] at [http://localhost:8080/DmService/1.0]
+2017-08-02 13:55:48.081 TRACE 7372 --- [nio-8080-exec-4] o.s.ws.server.MessageTracing.received    : Received request [<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dm="http://dm.xml.soap.sample.com/">
+   <soapenv:Header/>
+   <soapenv:Body>
+      <dm:queryEmpConfigs>
+         <!--Optional:-->
+         <arg0>
+            <id>1</id>
+         </arg0>
+      </dm:queryEmpConfigs>
+   </soapenv:Body>
+</soapenv:Envelope>]
+
+Looking up endpoint for [{http://dm.xml.soap.sample.com/}queryEmpConfigs]
+Endpoint mapping [org.springframework.ws.server.endpoint.mapping.PayloadRootAnnotationMethodEndpointMapping@65daf752] maps request to endpoint [public com.sample.soap.xml.dm.QueryEmpConfigsResponse com.example.grand.soap.adapter.SpringBootGrandSoapAdapterEndpoint.queryEmpConfigs(com.sample.soap.xml.dm.QueryEmpConfigs,org.springframework.ws.context.MessageContext) throws java.lang.Exception]
+Testing endpoint adapter [org.springframework.ws.server.endpoint.adapter.DefaultMethodEndpointAdapter@32b2ea50]
+
+SOAP Request Received Of queryCustomer com.sample.soap.xml.dm.QueryEmpConfigs@3defd553
+Processing of com.example.grand.soap.adapter.SpringBootGrandRestAdapterClient::queryEmpConfigs is started with request parameter com.sample.soap.xml.dm.QueryEmpConfigs@3defd553and endPoint is http://localhost:6061/dmCustomer/v1/empConfig
+Processing of com.example.grand.soap.adapter.SpringBootGrandRestAdapterClient:: queryCustomer is finished with response parameter com.sample.soap.xml.dm.QueryEmpConfigsResponse@3b5f4272
+
+2017-08-02 13:55:49.513  INFO 7372 --- [nio-8080-exec-4] c.e.grand.soap.util.GrandCommonUtility   : Read SOAP Header from request and append in response : Start
+2017-08-02 13:55:49.513  INFO 7372 --- [nio-8080-exec-4] c.e.grand.soap.util.GrandCommonUtility   : Read SOAP Header from request and append in response : End
+2017-08-02 13:55:49.513  INFO 7372 --- [nio-8080-exec-4] g.s.a.SpringBootGrandSoapAdapterEndpoint : SOAP Response Sent Of queryEmpConfigs  : com.sample.soap.xml.dm.QueryEmpConfigsResponse@3b5f4272
+2017-08-02 13:55:49.514 TRACE 7372 --- [nio-8080-exec-4] o.s.w.s.e.a.DefaultMethodEndpointAdapter : Method [public com.sample.soap.xml.dm.QueryEmpConfigsResponse com.example.grand.soap.adapter.SpringBootGrandSoapAdapterEndpoint.queryEmpConfigs(com.sample.soap.xml.dm.QueryEmpConfigs,org.springframework.ws.context.MessageContext) throws java.lang.Exception] returned [com.sample.soap.xml.dm.QueryEmpConfigsResponse@3b5f4272]
+2017-08-02 13:55:49.514 DEBUG 7372 --- [nio-8080-exec-4] m.j.XmlRootElementPayloadMethodProcessor : Marshalling [com.sample.soap.xml.dm.QueryEmpConfigsResponse@3b5f4272] to response payload
+2017-08-02 13:55:49.645 TRACE 7372 --- [nio-8080-exec-4] o.s.ws.server.MessageTracing.sent        : Sent response [<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/"><SOAP-ENV:Header/><SOAP-ENV:Body><ns3:queryEmpConfigsResponse xmlns:ns3="http://dm.xml.soap.sample.com/"><return><address>Sec49</address><city>BNDA</city><email>r1@gmail.com</email><firstName>Roo6</firstName><id>1</id><lastName>L</lastName><mobile>644681423</mobile></return></ns3:queryEmpConfigsResponse></SOAP-ENV:Body></SOAP-ENV:Envelope>] for request [<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/" xmlns:dm="http://dm.xml.soap.sample.com/">
+
+   <soapenv:Header/>
+   <soapenv:Body>
+      <dm:queryEmpConfigs>
+         <!--Optional:-->
+         <arg0>
+            <id>1</id>
+         </arg0>
+      </dm:queryEmpConfigs>
+   </soapenv:Body>
+</soapenv:Envelope>]
+
+2017-08-02 13:55:49.653 TRACE 7372 --- [nio-8080-exec-4] o.s.w.t.http.MessageDispatcherServlet    : Cleared thread-bound request context: org.apache.catalina.connector.RequestFacade@348a4cf0
+2017-08-02 13:55:49.654 DEBUG 7372 --- [nio-8080-exec-4] o.s.w.t.http.MessageDispatcherServlet    : Successfully completed request
